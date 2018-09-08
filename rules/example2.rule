@@ -1,0 +1,195 @@
+TopRule =
+$* ($summation {sign = 'plus'}
+        {hundreddigit = summation._hundreddigit}
+        {digit = summation._digit}
+        {tens = summation._tens}
+        {hundred = summation._hundred}
+
+        {hundreddigit2 = summation._hundreddigit2}
+        {digit2 = summation._digit2}
+        {tens2 = summation._tens2}
+        {hundred2 = summation._hundred2}
+|
+$subtraction {sign = 'minus'}
+        {hundreddigit = subtraction._hundreddigit}
+        {digit = subtraction._digit}
+        {tens = subtraction._tens}
+        {hundred = subtraction._hundred}
+
+        {hundreddigit2 = subtraction._hundreddigit2}
+        {digit2 = subtraction._digit2}
+        {tens2 = subtraction._tens2}
+        {hundred2 = subtraction._hundred2}
+|
+$multiplation {sign = 'multiply'}
+        {hundreddigit = multiplation._hundreddigit}
+        {digit = multiplation._digit}
+        {tens = multiplation._tens}
+        {hundred = multiplation._hundred}
+
+        {hundreddigit2 = multiplation._hundreddigit2}
+        {digit2 = multiplation._digit2}
+        {tens2 = multiplation._tens2}
+        {hundred2 = multiplation._hundred2}
+|
+$division {sign = 'divide' }
+        {hundreddigit = division._hundreddigit}
+        {digit = division._digit}
+        {tens = division._tens}
+        {hundred = division._hundred}
+
+        {hundreddigit2 = division._hundreddigit2}
+        {digit2 = division._digit2}
+        {tens2 = division._tens2}
+        {hundred2 = division._hundred2}
+)$*;
+
+
+# ##############subtraction##############
+subtraction =
+$*
+{_hundreddigit = '0'}
+{_digit = '0'}
+{_tens = '0'}
+{_hundred = '0'}
+$*
+?($* $digit {_hundreddigit = digit._digit})
+?($* $hundred {_hundred = hundred._hundred})
+$*
+?($* $tens {_tens = tens._tens})
+?($* $digit {_digit = digit._digit})
+
+(minus | subtract)
+{_hundreddigit2 = '0'}
+{_digit2 = '0'}
+{_tens2 = '0'}
+{_hundred2 = '0'}
+$*
+?($* $digit {_hundreddigit2 = digit._digit})
+?($* $hundred {_hundred2 = hundred._hundred})
+$*
+?($* $tens {_tens2 = tens._tens})
+?($* $digit {_digit2 = digit._digit})
+;
+
+##############summation##############
+summation =
+$*
+{_hundreddigit = '0'}
+{_digit = '0'}
+{_tens = '0'}
+{_hundred = '0'}
+$*
+?($* $digit {_hundreddigit = digit._digit})
+?($* $hundred {_hundred = hundred._hundred})
+$*
+?($* $tens {_tens = tens._tens})
+?($* $digit {_digit = digit._digit})
+
+(plus | add)
+{_hundreddigit2 = '0'}
+{_digit2 = '0'}
+{_tens2 = '0'}
+{_hundred2 = '0'}
+$*
+?($* $digit {_hundreddigit2 = digit._digit})
+?($* $hundred {_hundred2 = hundred._hundred})
+$*
+?($* $tens {_tens2 = tens._tens})
+?($* $digit {_digit2 = digit._digit})
+
+;
+
+
+
+# ##############multiplation##############
+multiplation =
+$*
+{_hundreddigit = '0'}
+{_digit = '0'}
+{_tens = '0'}
+{_hundred = '0'}
+$*
+?($* $digit {_hundreddigit = digit._digit})
+?($* $hundred {_hundred = hundred._hundred})
+$*
+?($* $tens {_tens = tens._tens})
+?($* $digit {_digit = digit._digit})
+
+(multiply | times | x)
+{_hundreddigit2 = '0'}
+{_digit2 = '0'}
+{_tens2 = '0'}
+{_hundred2 = '0'}
+$*
+?($* $digit {_hundreddigit2 = digit._digit})
+?($* $hundred {_hundred2 = hundred._hundred})
+$*
+?($* $tens {_tens2 = tens._tens})
+?($* $digit {_digit2 = digit._digit})
+;
+
+# ##############division##############
+division =
+$*
+{_hundreddigit = '0'}
+{_digit = '0'}
+{_tens = '0'}
+{_hundred = '0'}
+$*
+?($* $digit {_hundreddigit = digit._digit})
+?($* $hundred {_hundred = hundred._hundred})
+$*
+?($* $tens {_tens = tens._tens})
+?($* $digit {_digit = digit._digit})
+
+(divide | /)
+{_hundreddigit2 = '0'}
+{_digit2 = '0'}
+{_tens2 = '0'}
+{_hundred2 = '0'}
+$*
+?($* $digit {_hundreddigit2 = digit._digit})
+?($* $hundred {_hundred2 = hundred._hundred})
+$*
+?($* $tens {_tens2 = tens._tens})
+?($* $digit {_digit2 = digit._digit})
+
+;
+
+hundred =
+((hundred | 100) {_hundred = '100'}
+);
+
+digit=
+((one | 1) {_digit = '1'} |
+ (two | 2) {_digit = '2'} |
+ (three | 3) {_digit = '3'} |
+ (four | 4) {_digit = '4'} |
+ (five | 5) {_digit = '5'} |
+ (six | 6) {_digit = '6'} |
+ (seven | 7) {_digit = '7'} |
+ (eight |8) {_digit = '8'} |
+ (nine | 9) {_digit = '9'} |
+ (ten | 10) {_digit = '10'} |
+ (eleven | 11) {_digit = '11'} |
+ (twelve | 12) {_digit = '12'} |
+ (thirteen | 13) {_digit = '13'} |
+ (forteen | 14) {_digit = '14'} |
+ (fifteen | 15) {_digit = '15'} |
+ (sixteen | 16) {_digit = '16'} |
+ (seventeen | 17) {_digit = '17'} |
+ (eighteen | 18) {_digit = '18'} |
+ (ninteen | 19) {_digit = '19'}
+ );
+
+tens =
+((twenty | 20) {_tens = '20'} |
+(thirty | 30) {_tens = '30'} |
+(forty | 40) {_tens = '40'} |
+(fifty | 50) {_tens = '50'} |
+(sixty | 60) {_tens = '60'} |
+(seventy | 70) {_tens = '70'} |
+(eighty | 80) {_tens = '80'} |
+(ninety | 90) {_tens = '90'}
+);

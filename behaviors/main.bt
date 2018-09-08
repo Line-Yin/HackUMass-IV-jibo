@@ -1,0 +1,261 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            "8243e296-63c8-449f-88f7-c44c70a141cc",
+            "ac62f36c-bac0-4fd9-9c84-c379738913bc",
+            "0d324751-3fe1-4418-8081-80193a1e5e99",
+            "ae67bed4-ed0a-4d35-9e26-e6014a6b52b2"
+        ],
+        "decorators": [
+            "7087dd92-ec05-4e8a-8b37-dbc007164b12"
+        ],
+        "options": {}
+    },
+    "meta": {
+        "version": 1
+    },
+    "ac62f36c-bac0-4fd9-9c84-c379738913bc": {
+        "id": "ac62f36c-bac0-4fd9-9c84-c379738913bc",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0d324751-3fe1-4418-8081-80193a1e5e99": {
+        "id": "0d324751-3fe1-4418-8081-80193a1e5e99",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: true,",
+                "        detectEnd: false,",
+                "        incremental: true,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "example2.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "      // var num = 0;",
+                "      // if (asrResult.NLParse.sign == 'plus'){",
+                "      //   var temp1 = Number(asrResult.NLParse.n1);",
+                "      //   var temp2 = Number(asrResult.NLParse.n2);",
+                "      //   num = temp1 + temp2;",
+                "      // }",
+                "      // else if(asrResult.NLParse.sign == 'minus'){",
+                "      //   var temp1 = Number(asrResult.NLParse.n1);",
+                "      //   var temp2 = Number(asrResult.NLParse.n2);",
+                "      //   num =  temp1 - temp2;      }",
+                "      // else if(asrResult.NLParse.sign == 'multiply'){",
+                "      //   var temp1 = Number(asrResult.NLParse.n1);",
+                "      //   var temp2 = Number(asrResult.NLParse.n2);",
+                "      //   num = temp1 * temp2;      }",
+                "      // else if(asrResult.NLParse.sign == 'divide'){",
+                "      //   var temp1 = Number(asrResult.NLParse.n1);",
+                "      //   var temp2 = Number(asrResult.NLParse.n2);",
+                "      //   num = temp1 / temp2;      }",
+                "      // ",
+                "      // jibo.tts.speak(num.toString(), (err) => {",
+                "      // ",
+                "      // });",
+                "      ",
+                "      var num1 = 0;",
+                "      var hundreddigit1 = 0;",
+                "      var hundred1 = 0;",
+                "      var tens1 =0;",
+                "      var digit1 = 0;",
+                "      ",
+                "      var num2 =0;",
+                "      var hundreddigit2 = 0;",
+                "      var hundred2 = 0;",
+                "      var tens2 =0;",
+                "      var digit2 = 0;",
+                "      ",
+                "      hundreddigit1 = Number(asrResult.NLParse.hundreddigit);",
+                "      hundred1 = Number(asrResult.NLParse.hundred);",
+                "      tens1 = Number(asrResult.NLParse.tens);",
+                "      digit1 = Number(asrResult.NLParse.digit);",
+                "      ",
+                "      hundreddigit2 = Number(asrResult.NLParse.hundreddigit2);",
+                "      hundred2 = Number(asrResult.NLParse.hundred2);",
+                "      tens2 = Number(asrResult.NLParse.tens2);",
+                "      digit2 = Number(asrResult.NLParse.digit2);",
+                "      ",
+                "      if (hundred1 == 0 ){",
+                "        num1 =hundreddigit1 +tens1+digit1;",
+                "      }",
+                "      else",
+                "        num1 = hundreddigit1*hundred1+tens1+digit1;",
+                "        ",
+                "      if (hundred2 == 0){",
+                "        num2 =hundreddigit2 +tens2+digit2;",
+                "      }  ",
+                "      else num2 = hundreddigit2*hundred2+tens2+digit2;",
+                "      ",
+                "      console.log(asrResult);",
+                "  ",
+                "      if (asrResult.NLParse.sign == 'plus'){",
+                "        jibo.tts.speak((num1+num2).toString());",
+                "        ",
+                "      }",
+                "      else if (asrResult.NLParse.sign == 'minus'){",
+                "        jibo.tts.speak((num1-num2).toString());",
+                "      }",
+                "      else if (asrResult.NLParse.sign == 'multiply'){",
+                "        jibo.tts.speak((num1*num2).toString());",
+                "      }",
+                "      else if (asrResult.NLParse.sign == 'divide'){",
+                "        jibo.tts.speak((num1/num2).toString());",
+                "      }",
+                "      ",
+                "    });",
+                "}    ",
+                "",
+                "      ",
+                "      ",
+                "      "
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false,
+        "decorators": []
+    },
+    "8243e296-63c8-449f-88f7-c44c70a141cc": {
+        "id": "8243e296-63c8-449f-88f7-c44c70a141cc",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Hello. I am Jibo the math genius.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "ae67bed4-ed0a-4d35-9e26-e6014a6b52b2": {
+        "id": "ae67bed4-ed0a-4d35-9e26-e6014a6b52b2",
+        "class": "Random",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false,
+        "children": [
+            "9e040271-6748-4372-a099-18bab7f03456",
+            "57840bb2-7231-4fda-b6d3-86d47e41521d"
+        ]
+    },
+    "3a4b72c5-fc04-4b1a-ba21-c0fe0d428de8": {
+        "id": "3a4b72c5-fc04-4b1a-ba21-c0fe0d428de8",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "dance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "9e040271-6748-4372-a099-18bab7f03456"
+    },
+    "dfc89942-8c62-42e0-a61e-2fac89204746": {
+        "id": "dfc89942-8c62-42e0-a61e-2fac89204746",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "excited.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "57840bb2-7231-4fda-b6d3-86d47e41521d"
+    },
+    "7087dd92-ec05-4e8a-8b37-dbc007164b12": {
+        "id": "7087dd92-ec05-4e8a-8b37-dbc007164b12",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "47ad0e72-e668-4ab6-b854-4064c57c6442": {
+        "id": "47ad0e72-e668-4ab6-b854-4064c57c6442",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "victory.mp3"
+        },
+        "asset-pack": "core",
+        "parent": "57840bb2-7231-4fda-b6d3-86d47e41521d"
+    },
+    "57840bb2-7231-4fda-b6d3-86d47e41521d": {
+        "id": "57840bb2-7231-4fda-b6d3-86d47e41521d",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": "ae67bed4-ed0a-4d35-9e26-e6014a6b52b2",
+        "children": [
+            "dfc89942-8c62-42e0-a61e-2fac89204746",
+            "47ad0e72-e668-4ab6-b854-4064c57c6442"
+        ]
+    },
+    "9e040271-6748-4372-a099-18bab7f03456": {
+        "id": "9e040271-6748-4372-a099-18bab7f03456",
+        "class": "Parallel",
+        "name": "",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": "ae67bed4-ed0a-4d35-9e26-e6014a6b52b2",
+        "children": [
+            "b987bf12-aea6-4c73-8cf3-10237beb3a09",
+            "3a4b72c5-fc04-4b1a-ba21-c0fe0d428de8"
+        ],
+        "decorators": []
+    },
+    "b987bf12-aea6-4c73-8cf3-10237beb3a09": {
+        "id": "b987bf12-aea6-4c73-8cf3-10237beb3a09",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "victory.mp3"
+        },
+        "asset-pack": "core",
+        "parent": "9e040271-6748-4372-a099-18bab7f03456"
+    }
+}
